@@ -8,7 +8,6 @@
     $scope.itemString = "";
     $scope.nbOfItems = 0;
     $scope.resultString;
-    // $scope.resultClass;
     $scope.resultOk = null;
 
     $scope.checkItems = function() {
