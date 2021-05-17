@@ -6,24 +6,36 @@
     <link rel="stylesheet" href="styles/bootstrap.min.css">
     <style>
       .message { font-size: 1.3em; font-weight: bold; }
+      .container {
+      width: 800px;
+      margin: 0 auto;
+      font-family: Verdana, Helvetica, sans-serif;
+    }
+    input.ok { border-color: black; }
+    input.ok { border-color: green; }
+    input.notOk { border-color: red; }
+    output.ok { color: green; border-color: green; }
+    output.notOk { color: red; border-color: red; }
     </style>
+    <script src="angular.min.js"></script>
+    <script src="app.js"></script>
   </head>
 <body>
-   <div class="container">
+   <div class="container" ng-controller="LunchCheckController">
      <h1>Lunch Checker</h1>
-
          <div class="form-group">
-             <input id="lunch-menu" type="text"
+             <input id="lunch-menu" type="text" ng-model="itemString" ng-class="{ok: resultOk, notOk: resultOk == false}"
              placeholder="list comma separated dishes you usually have for lunch"
              class="form-control">
          </div>
-         <div class="form-group" ng-controller="LunchCheckController">
-             <button class="btn btn-default">Check If Too Much</button>
+         <div class="form-group">
+             <button class="btn btn-default" ng-click="checkItems();">Check If Too Much</button>
          </div>
          <div class="form-group message">
-           <!-- Your message can go here. -->
+           <p>
+          <output ng-class="{ok: resultOk, notOk: !resultOk}">{{resultString}}</output>
+           </p>
          </div>
    </div>
-
 </body>
 </html>
